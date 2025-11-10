@@ -74,15 +74,16 @@ body {
   padding: 0 10px;
 }
 
-.product__add {
+.product__add, .product__delete {
   background: green;
+  margin-bottom: 5px;
   padding: 10px 20px;
   color: #fff;
   border-radius: 5px;
   cursor: pointer;
 }
 
-.product__add:hover {
+.product__add:hover, .product__delete:hover {
   opacity: 0.8;
 }
 
