@@ -4,10 +4,7 @@ const buttonDelete = document.querySelector('.button_delete');
 const STORAGE_KEY = 'textEditorContent';
 
 window.addEventListener('DOMContentLoaded', () => {
-    const savedText = localStorage.getItem(STORAGE_KEY);
-    if (savedText) {
-        editor.value = savedText;
-    }
+    editor.value = localStorage.getItem(STORAGE_KEY);
 });
 
 editor.addEventListener('input', () => {
@@ -21,7 +18,7 @@ buttonDelete.addEventListener('click', () => {
     
     if (confirm('Вы уверены, что хотите очистить весь текст?')) {
         editor.value = '';
-        localStorage.setItem(STORAGE_KEY, '');
+        localStorage.removeItem(STORAGE_KEY);
         
         editor.focus();
     }

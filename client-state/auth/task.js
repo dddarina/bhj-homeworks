@@ -21,12 +21,7 @@ class AuthManager {
 
     checkAuthState() {
         const userId = localStorage.getItem(this.STORAGE_KEY);
-
-        if (userId) {
-            this.showWelcome(userId);
-        } else {
-            this.showSignin();
-        }
+        this.showWelcome(userId);
     }
 
     showSignin() {
@@ -36,6 +31,8 @@ class AuthManager {
     }
 
     showWelcome(userId) {
+        if (!userId) return;
+        
         this.userIdSpan.textContent = userId;
         this.signinForm.classList.remove('signin_active');
         this.welcomeBlock.classList.add('welcome_active');
@@ -66,8 +63,6 @@ class AuthManager {
         }
 
         try {
-            const submitBtn = document.getElementById('signin__btn');
-
             const response = await fetch(this.API_URL, {
                 method: 'POST',
                 headers: {
